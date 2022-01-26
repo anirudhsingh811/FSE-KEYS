@@ -93,8 +93,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Keys\CzmFactory.cs" />
     <Compile Include="Keys\CZMService.cs" />
     <Compile Include="Keys\EnigmaWrapper.cs" />
+    <Compile Include="Keys\ICzmFactory.cs" />
+    <Compile Include="Keys\ICzmService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -10,7 +10,7 @@ using __CallingConvention = global::System.Runtime.InteropServices.CallingConven
 
 namespace EnigmaWrapper
 {
-    public unsafe partial class CzmService : IDisposable
+    public unsafe partial class CzmService : IDisposable, ICzmService
     {
         [StructLayout(LayoutKind.Sequential, Size = 16)]
         public partial struct Internal
@@ -207,7 +207,7 @@ namespace EnigmaWrapper
     }
 
     /// <summary>Closure type used to publish processing results.</summary>
-    public unsafe partial class CzmServiceResult : IDisposable
+    public unsafe partial class CzmServiceResult : IDisposable, ICzmServiceResult
     {
         [StructLayout(LayoutKind.Sequential, Size = 16)]
         public partial struct Internal
@@ -323,7 +323,7 @@ namespace EnigmaWrapper
                 var __ptr0 = ((Internal*)__Instance)->notify;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_IntPtr_ulong_long_long)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_IntPtr_ulong_long_long));
             }
-            
+
             set
             {
                 ((Internal*)__Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);

@@ -7,8 +7,8 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using __CallingConvention = global::System.Runtime.InteropServices.CallingConvention;
-using IntPtr = global::System.IntPtr;
+
+
 
 namespace EnigmaWrapper
 {
@@ -16,96 +16,96 @@ namespace EnigmaWrapper
     public unsafe partial class CzmAdminITResult : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
             internal IntPtr args;
             internal IntPtr notify;
             internal IntPtr notify_V2;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmAdminITResult@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmAdminITResult@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmAdminITResult> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmAdminITResult>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmAdminITResult __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmAdminITResult CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmAdminITResult(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmAdminITResult __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmAdminITResult GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmAdminITResult)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmAdminITResult __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmAdminITResult CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmAdminITResult(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmAdminITResult(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmAdminITResult(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmAdminITResult(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmAdminITResult()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminITResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminITResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmAdminITResult(global::EnigmaWrapper.CzmAdminITResult _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminITResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmAdminITResult.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmAdminITResult.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminITResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmAdminITResult.Internal*)Instance) = *((global::EnigmaWrapper.CzmAdminITResult.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Optional arguments</summary>
@@ -113,12 +113,12 @@ namespace EnigmaWrapper
         {
             get
             {
-                return ((__Internal*)__Instance)->args;
+                return ((Internal*)Instance)->args;
             }
 
             set
             {
-                ((__Internal*)__Instance)->args = (IntPtr)value;
+                ((Internal*)Instance)->args = (IntPtr)value;
             }
         }
 
@@ -128,13 +128,13 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify;
+                var __ptr0 = ((Internal*)Instance)->notify;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
 
@@ -145,13 +145,13 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify_V2;
+                var __ptr0 = ((Internal*)Instance)->notify_V2;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
     }
@@ -160,100 +160,100 @@ namespace EnigmaWrapper
     public unsafe partial class CzmAdminIT : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
-            internal global::EnigmaWrapper.CzmAdminITResult.__Internal result;
+            internal global::EnigmaWrapper.CzmAdminITResult.Internal result;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmAdminIT@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmAdminIT@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaAdminITMakeInstance", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaAdminITMakeInstance", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CzmEnigmaAdminITMakeInstance(IntPtr @return, IntPtr result);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaAdminITValidateDefaultPasscode", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaAdminITValidateDefaultPasscode", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaAdminITValidateDefaultPasscode(IntPtr admin, [MarshalAs(UnmanagedType.LPStr)] string serno, [MarshalAs(UnmanagedType.LPStr)] string pass);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmAdminIT> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmAdminIT>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmAdminIT __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmAdminIT CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmAdminIT(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmAdminIT __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmAdminIT GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmAdminIT)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmAdminIT __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmAdminIT CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmAdminIT(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmAdminIT(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmAdminIT(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmAdminIT(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmAdminIT()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminIT.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminIT.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmAdminIT(global::EnigmaWrapper.CzmAdminIT _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminIT.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmAdminIT.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmAdminIT.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmAdminIT.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmAdminIT.Internal*)Instance) = *((global::EnigmaWrapper.CzmAdminIT.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Returns an initialized instance of #CzmAdminIT</summary>
@@ -263,10 +263,10 @@ namespace EnigmaWrapper
         {
             if (ReferenceEquals(result, null))
                 throw new global::System.ArgumentNullException("result", "Cannot be null because it is passed by value.");
-            var __arg0 = result.__Instance;
-            var __ret = new global::EnigmaWrapper.CzmAdminIT.__Internal();
-            __Internal.CzmEnigmaAdminITMakeInstance(new IntPtr(&__ret), __arg0);
-            return global::EnigmaWrapper.CzmAdminIT.__CreateInstance(__ret);
+            var __arg0 = result.Instance;
+            var __ret = new global::EnigmaWrapper.CzmAdminIT.Internal();
+            Internal.CzmEnigmaAdminITMakeInstance(new IntPtr(&__ret), __arg0);
+            return global::EnigmaWrapper.CzmAdminIT.CreateInstance(__ret);
         }
 
         /// <summary>
@@ -282,8 +282,8 @@ namespace EnigmaWrapper
         /// </remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaAdminITValidateDefaultPasscode(global::EnigmaWrapper.CzmAdminIT admin, string serno, string pass)
         {
-            var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-            var __ret = __Internal.CzmEnigmaAdminITValidateDefaultPasscode(__arg0, serno, pass);
+            var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+            var __ret = Internal.CzmEnigmaAdminITValidateDefaultPasscode(__arg0, serno, pass);
             return __ret;
         }
 
@@ -291,14 +291,14 @@ namespace EnigmaWrapper
         {
             get
             {
-                return global::EnigmaWrapper.CzmAdminITResult.__CreateInstance(new IntPtr(&((__Internal*)__Instance)->result));
+                return global::EnigmaWrapper.CzmAdminITResult.CreateInstance(new IntPtr(&((Internal*)Instance)->result));
             }
 
             set
             {
                 if (ReferenceEquals(value, null))
                     throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-                ((__Internal*)__Instance)->result = *(global::EnigmaWrapper.CzmAdminITResult.__Internal*)value.__Instance;
+                ((Internal*)Instance)->result = *(global::EnigmaWrapper.CzmAdminITResult.Internal*)value.Instance;
             }
         }
     }
@@ -340,100 +340,100 @@ namespace EnigmaWrapper
     public unsafe partial class CzmBiomed : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
-            internal global::EnigmaWrapper.CzmBiomedResult.__Internal result;
+            internal global::EnigmaWrapper.CzmBiomedResult.Internal result;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmBiomed@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmBiomed@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaBiomedMakeInstance", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaBiomedMakeInstance", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CzmEnigmaBiomedMakeInstance(IntPtr @return, IntPtr result);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaBiomedValidateDefaultPasscode", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaBiomedValidateDefaultPasscode", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaBiomedValidateDefaultPasscode(IntPtr admin, [MarshalAs(UnmanagedType.LPStr)] string serno, [MarshalAs(UnmanagedType.LPStr)] string pass);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmBiomed> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmBiomed>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmBiomed __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmBiomed CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmBiomed(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmBiomed __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmBiomed GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmBiomed)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmBiomed __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmBiomed CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmBiomed(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmBiomed(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmBiomed(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmBiomed(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmBiomed()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomed.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomed.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmBiomed(global::EnigmaWrapper.CzmBiomed _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomed.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmBiomed.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmBiomed.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomed.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmBiomed.Internal*)Instance) = *((global::EnigmaWrapper.CzmBiomed.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Returns an initialized instance of #CzmBiomed</summary>
@@ -443,10 +443,10 @@ namespace EnigmaWrapper
         {
             if (ReferenceEquals(result, null))
                 throw new global::System.ArgumentNullException("result", "Cannot be null because it is passed by value.");
-            var __arg0 = result.__Instance;
-            var __ret = new global::EnigmaWrapper.CzmBiomed.__Internal();
-            __Internal.CzmEnigmaBiomedMakeInstance(new IntPtr(&__ret), __arg0);
-            return global::EnigmaWrapper.CzmBiomed.__CreateInstance(__ret);
+            var __arg0 = result.Instance;
+            var __ret = new global::EnigmaWrapper.CzmBiomed.Internal();
+            Internal.CzmEnigmaBiomedMakeInstance(new IntPtr(&__ret), __arg0);
+            return global::EnigmaWrapper.CzmBiomed.CreateInstance(__ret);
         }
 
         /// <summary>
@@ -462,8 +462,8 @@ namespace EnigmaWrapper
         /// </remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaBiomedValidateDefaultPasscode(global::EnigmaWrapper.CzmBiomed admin, string serno, string pass)
         {
-            var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-            var __ret = __Internal.CzmEnigmaBiomedValidateDefaultPasscode(__arg0, serno, pass);
+            var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+            var __ret = Internal.CzmEnigmaBiomedValidateDefaultPasscode(__arg0, serno, pass);
             return __ret;
         }
 
@@ -471,14 +471,14 @@ namespace EnigmaWrapper
         {
             get
             {
-                return global::EnigmaWrapper.CzmBiomedResult.__CreateInstance(new IntPtr(&((__Internal*)__Instance)->result));
+                return global::EnigmaWrapper.CzmBiomedResult.CreateInstance(new IntPtr(&((Internal*)Instance)->result));
             }
 
             set
             {
                 if (ReferenceEquals(value, null))
                     throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-                ((__Internal*)__Instance)->result = *(global::EnigmaWrapper.CzmBiomedResult.__Internal*)value.__Instance;
+                ((Internal*)Instance)->result = *(global::EnigmaWrapper.CzmBiomedResult.Internal*)value.Instance;
             }
         }
     }
@@ -487,96 +487,96 @@ namespace EnigmaWrapper
     public unsafe partial class CzmBiomedResult : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
             internal IntPtr args;
             internal IntPtr notify;
             internal IntPtr notify_V2;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmBiomedResult@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmBiomedResult@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmBiomedResult> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmBiomedResult>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmBiomedResult __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmBiomedResult CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmBiomedResult(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmBiomedResult __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmBiomedResult GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmBiomedResult)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmBiomedResult __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmBiomedResult CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmBiomedResult(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmBiomedResult(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmBiomedResult(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmBiomedResult(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmBiomedResult()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomedResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomedResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmBiomedResult(global::EnigmaWrapper.CzmBiomedResult _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomedResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmBiomedResult.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmBiomedResult.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmBiomedResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmBiomedResult.Internal*)Instance) = *((global::EnigmaWrapper.CzmBiomedResult.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Optional arguments</summary>
@@ -584,12 +584,12 @@ namespace EnigmaWrapper
         {
             get
             {
-                return ((__Internal*)__Instance)->args;
+                return ((Internal*)Instance)->args;
             }
 
             set
             {
-                ((__Internal*)__Instance)->args = (IntPtr)value;
+                ((Internal*)Instance)->args = (IntPtr)value;
             }
         }
 
@@ -599,13 +599,13 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify;
+                var __ptr0 = ((Internal*)Instance)->notify;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
 
@@ -616,25 +616,25 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify_V2;
+                var __ptr0 = ((Internal*)Instance)->notify_V2;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
     }
 
     public unsafe partial class CzmEnigma
     {
-        public partial struct __Internal
+        public partial struct Internal
         {
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaInit", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaInit", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaInit();
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaDeinit", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaDeinit", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CzmEnigmaDeinit();
         }
 
@@ -647,7 +647,7 @@ namespace EnigmaWrapper
         /// </remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaInit()
         {
-            var __ret = __Internal.CzmEnigmaInit();
+            var __ret = Internal.CzmEnigmaInit();
             return __ret;
         }
 
@@ -659,7 +659,7 @@ namespace EnigmaWrapper
         /// </remarks>
         public static void CzmEnigmaDeinit()
         {
-            __Internal.CzmEnigmaDeinit();
+            Internal.CzmEnigmaDeinit();
         }
     }
 
@@ -667,110 +667,110 @@ namespace EnigmaWrapper
     public unsafe partial class CzmVersion : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 1)]
-        public partial struct __Internal
+        public partial struct Internal
         {
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmVersion@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmVersion@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetFileVersion", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetFileVersion", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaVersionGetFileVersion(IntPtr info, int* major, int* minor, int* patch, int* build);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersion", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersion", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaVersionGetVersion(IntPtr info, int* major, int* minor, int* patch);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersionNumber", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersionNumber", CallingConvention = CallingConvention.Cdecl)]
             internal static extern int CzmEnigmaVersionGetVersionNumber(IntPtr info);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersionString", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetVersionString", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr CzmEnigmaVersionGetVersionString(IntPtr info);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetSourceRev", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionGetSourceRev", CallingConvention = CallingConvention.Cdecl)]
             internal static extern IntPtr CzmEnigmaVersionGetSourceRev(IntPtr info);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionMakeInstance", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaVersionMakeInstance", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CzmEnigmaVersionMakeInstance(IntPtr @return);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmVersion> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmVersion>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmVersion __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmVersion CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmVersion(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmVersion __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmVersion GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmVersion)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmVersion __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmVersion CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmVersion(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmVersion(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmVersion(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmVersion(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmVersion()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmVersion.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmVersion.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmVersion(global::EnigmaWrapper.CzmVersion _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmVersion.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmVersion.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmVersion.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmVersion.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmVersion.Internal*)Instance) = *((global::EnigmaWrapper.CzmVersion.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Returns the build version of the binary artifact.</summary>
@@ -782,7 +782,7 @@ namespace EnigmaWrapper
         /// <remarks>#ENIGMA_NOERROR if success, an error code otherwise</remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaVersionGetFileVersion(global::EnigmaWrapper.CzmVersion info, ref int major, ref int minor, ref int patch, ref int build)
         {
-            var __arg0 = info is null ? IntPtr.Zero : info.__Instance;
+            var __arg0 = info is null ? IntPtr.Zero : info.Instance;
             fixed (int* __major1 = &major)
             {
                 var __arg1 = __major1;
@@ -795,7 +795,7 @@ namespace EnigmaWrapper
                         fixed (int* __build4 = &build)
                         {
                             var __arg4 = __build4;
-                            var __ret = __Internal.CzmEnigmaVersionGetFileVersion(__arg0, __arg1, __arg2, __arg3, __arg4);
+                            var __ret = Internal.CzmEnigmaVersionGetFileVersion(__arg0, __arg1, __arg2, __arg3, __arg4);
                             return __ret;
                         }
                     }
@@ -811,7 +811,7 @@ namespace EnigmaWrapper
         /// <remarks>#ENIGMA_NOERROR if success, an error code otherwise</remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaVersionGetVersion(global::EnigmaWrapper.CzmVersion info, ref int major, ref int minor, ref int patch)
         {
-            var __arg0 = info is null ? IntPtr.Zero : info.__Instance;
+            var __arg0 = info is null ? IntPtr.Zero : info.Instance;
             fixed (int* __major1 = &major)
             {
                 var __arg1 = __major1;
@@ -821,7 +821,7 @@ namespace EnigmaWrapper
                     fixed (int* __patch3 = &patch)
                     {
                         var __arg3 = __patch3;
-                        var __ret = __Internal.CzmEnigmaVersionGetVersion(__arg0, __arg1, __arg2, __arg3);
+                        var __ret = Internal.CzmEnigmaVersionGetVersion(__arg0, __arg1, __arg2, __arg3);
                         return __ret;
                     }
                 }
@@ -832,24 +832,24 @@ namespace EnigmaWrapper
         /// <remarks>#ENIGMA_VERSION_NUMBER</remarks>
         public static int CzmEnigmaVersionGetVersionNumber(global::EnigmaWrapper.CzmVersion info)
         {
-            var __arg0 = info is null ? IntPtr.Zero : info.__Instance;
-            var __ret = __Internal.CzmEnigmaVersionGetVersionNumber(__arg0);
+            var __arg0 = info is null ? IntPtr.Zero : info.Instance;
+            var __ret = Internal.CzmEnigmaVersionGetVersionNumber(__arg0);
             return __ret;
         }
 
         /// <summary>Returns a human-readable string representing the product version of the binary artifact.</summary>
         public static string CzmEnigmaVersionGetVersionString(global::EnigmaWrapper.CzmVersion info)
         {
-            var __arg0 = info is null ? IntPtr.Zero : info.__Instance;
-            var __ret = __Internal.CzmEnigmaVersionGetVersionString(__arg0);
+            var __arg0 = info is null ? IntPtr.Zero : info.Instance;
+            var __ret = Internal.CzmEnigmaVersionGetVersionString(__arg0);
             return Marshal.PtrToStringAuto(__ret);
         }
 
         /// <summary>Returns a human-readable string representing the source revision the binary artifact is built from.</summary>
         public static string CzmEnigmaVersionGetSourceRev(global::EnigmaWrapper.CzmVersion info)
         {
-            var __arg0 = info is null ? IntPtr.Zero : info.__Instance;
-            var __ret = __Internal.CzmEnigmaVersionGetSourceRev(__arg0);
+            var __arg0 = info is null ? IntPtr.Zero : info.Instance;
+            var __ret = Internal.CzmEnigmaVersionGetSourceRev(__arg0);
             return Marshal.PtrToStringAuto(__ret);
         }
 
@@ -859,9 +859,9 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ret = new global::EnigmaWrapper.CzmVersion.__Internal();
-                __Internal.CzmEnigmaVersionMakeInstance(new IntPtr(&__ret));
-                return global::EnigmaWrapper.CzmVersion.__CreateInstance(__ret);
+                var __ret = new global::EnigmaWrapper.CzmVersion.Internal();
+                Internal.CzmEnigmaVersionMakeInstance(new IntPtr(&__ret));
+                return global::EnigmaWrapper.CzmVersion.CreateInstance(__ret);
             }
         }
     }
@@ -870,96 +870,96 @@ namespace EnigmaWrapper
     public unsafe partial class CzmFactoryResult : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
             internal IntPtr args;
             internal IntPtr notify;
             internal IntPtr notify_V2;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmFactoryResult@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmFactoryResult@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmFactoryResult> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmFactoryResult>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmFactoryResult __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmFactoryResult CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmFactoryResult(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmFactoryResult __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmFactoryResult GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmFactoryResult)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmFactoryResult __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmFactoryResult CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmFactoryResult(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmFactoryResult(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmFactoryResult(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmFactoryResult(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmFactoryResult()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactoryResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactoryResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmFactoryResult(global::EnigmaWrapper.CzmFactoryResult _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactoryResult.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmFactoryResult.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmFactoryResult.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactoryResult.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmFactoryResult.Internal*)Instance) = *((global::EnigmaWrapper.CzmFactoryResult.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Optional arguments</summary>
@@ -967,12 +967,12 @@ namespace EnigmaWrapper
         {
             get
             {
-                return ((__Internal*)__Instance)->args;
+                return ((Internal*)Instance)->args;
             }
 
             set
             {
-                ((__Internal*)__Instance)->args = (IntPtr)value;
+                ((Internal*)Instance)->args = (IntPtr)value;
             }
         }
 
@@ -982,13 +982,13 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify;
+                var __ptr0 = ((Internal*)Instance)->notify;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
 
@@ -999,13 +999,13 @@ namespace EnigmaWrapper
         {
             get
             {
-                var __ptr0 = ((__Internal*)__Instance)->notify_V2;
+                var __ptr0 = ((Internal*)Instance)->notify_V2;
                 return __ptr0 == IntPtr.Zero ? null : (global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long_long)Marshal.GetDelegateForFunctionPointer(__ptr0, typeof(global::EnigmaWrapper.Delegates.Action_IntPtr_EnigmaWrapper_CzmError_long_long));
             }
 
             set
             {
-                ((__Internal*)__Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
+                ((Internal*)Instance)->notify_V2 = value == null ? global::System.IntPtr.Zero : Marshal.GetFunctionPointerForDelegate(value);
             }
         }
     }
@@ -1014,103 +1014,103 @@ namespace EnigmaWrapper
     public unsafe partial class CzmFactory : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, Size = 24)]
-        public partial struct __Internal
+        public partial struct Internal
         {
-            internal global::EnigmaWrapper.CzmFactoryResult.__Internal result;
+            internal global::EnigmaWrapper.CzmFactoryResult.Internal result;
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmFactory@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-            internal static extern IntPtr cctor(IntPtr __instance, IntPtr _0);
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmFactory@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+            internal static extern IntPtr cctor(IntPtr instance, IntPtr _0);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryMakeInstance", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryMakeInstance", CallingConvention = CallingConvention.Cdecl)]
             internal static extern void CzmEnigmaFactoryMakeInstance(IntPtr @return, IntPtr result);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryValidatePasscode", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryValidatePasscode", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaFactoryValidatePasscode(IntPtr admin, long today, [MarshalAs(UnmanagedType.LPArray)] string[] prod, ulong prodCnt, [MarshalAs(UnmanagedType.LPStr)] string pass);
 
-            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryValidatePasscodeFromFile", CallingConvention = __CallingConvention.Cdecl)]
+            [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaFactoryValidatePasscodeFromFile", CallingConvention = CallingConvention.Cdecl)]
             internal static extern global::EnigmaWrapper.CzmError CzmEnigmaFactoryValidatePasscodeFromFile(IntPtr admin, long today, [MarshalAs(UnmanagedType.LPArray)] string[] prod, ulong prodCnt, IntPtr root, ulong rootLen);
         }
 
-        public IntPtr __Instance { get; protected set; }
+        public IntPtr Instance { get; protected set; }
 
         internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmFactory> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmFactory>();
 
-        protected bool __ownsNativeInstance;
+        protected bool ownsNativeInstance;
 
-        internal static CzmFactory __CreateInstance(IntPtr native, bool skipVTables = false)
+        internal static CzmFactory CreateInstance(IntPtr native, bool skipVTables = false)
         {
             return new CzmFactory(native.ToPointer(), skipVTables);
         }
 
-        internal static CzmFactory __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+        internal static CzmFactory GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
         {
             if (native == IntPtr.Zero)
                 return null;
             if (NativeToManagedMap.TryGetValue(native, out var managed))
                 return (CzmFactory)managed;
-            var result = __CreateInstance(native, skipVTables);
+            var result = CreateInstance(native, skipVTables);
             if (saveInstance)
                 NativeToManagedMap[native] = result;
             return result;
         }
 
-        internal static CzmFactory __CreateInstance(__Internal native, bool skipVTables = false)
+        internal static CzmFactory CreateInstance(Internal native, bool skipVTables = false)
         {
             return new CzmFactory(native, skipVTables);
         }
 
-        private static void* __CopyValue(__Internal native)
+        private static void* CopyValue(Internal native)
         {
-            var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-            *(__Internal*)ret = native;
+            var ret = Marshal.AllocHGlobal(sizeof(Internal));
+            *(Internal*)ret = native;
             return ret.ToPointer();
         }
 
-        private CzmFactory(__Internal native, bool skipVTables = false)
-            : this(__CopyValue(native), skipVTables)
+        private CzmFactory(Internal native, bool skipVTables = false)
+            : this(CopyValue(native), skipVTables)
         {
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         protected CzmFactory(void* native, bool skipVTables = false)
         {
             if (native == null)
                 return;
-            __Instance = new IntPtr(native);
+            Instance = new IntPtr(native);
         }
 
         public CzmFactory()
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactory.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactory.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
         }
 
         public CzmFactory(global::EnigmaWrapper.CzmFactory _0)
         {
-            __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactory.__Internal));
-            __ownsNativeInstance = true;
-            NativeToManagedMap[__Instance] = this;
-            *((global::EnigmaWrapper.CzmFactory.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmFactory.__Internal*)_0.__Instance);
+            Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmFactory.Internal));
+            ownsNativeInstance = true;
+            NativeToManagedMap[Instance] = this;
+            *((global::EnigmaWrapper.CzmFactory.Internal*)Instance) = *((global::EnigmaWrapper.CzmFactory.Internal*)_0.Instance);
         }
 
         public void Dispose()
         {
-            Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+            Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
         }
 
         partial void DisposePartial(bool disposing);
 
         internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
         {
-            if (__Instance == IntPtr.Zero)
+            if (Instance == IntPtr.Zero)
                 return;
-            NativeToManagedMap.TryRemove(__Instance, out _);
+            NativeToManagedMap.TryRemove(Instance, out _);
             DisposePartial(disposing);
-            if (__ownsNativeInstance)
-                Marshal.FreeHGlobal(__Instance);
-            __Instance = IntPtr.Zero;
+            if (ownsNativeInstance)
+                Marshal.FreeHGlobal(Instance);
+            Instance = IntPtr.Zero;
         }
 
         /// <summary>Returns an initialized instance of #CzmFactory</summary>
@@ -1120,10 +1120,10 @@ namespace EnigmaWrapper
         {
             if (ReferenceEquals(result, null))
                 throw new global::System.ArgumentNullException("result", "Cannot be null because it is passed by value.");
-            var __arg0 = result.__Instance;
-            var __ret = new global::EnigmaWrapper.CzmFactory.__Internal();
-            __Internal.CzmEnigmaFactoryMakeInstance(new IntPtr(&__ret), __arg0);
-            return global::EnigmaWrapper.CzmFactory.__CreateInstance(__ret);
+            var __arg0 = result.Instance;
+            var __ret = new global::EnigmaWrapper.CzmFactory.Internal();
+            Internal.CzmEnigmaFactoryMakeInstance(new IntPtr(&__ret), __arg0);
+            return global::EnigmaWrapper.CzmFactory.CreateInstance(__ret);
         }
 
         /// <summary>
@@ -1141,8 +1141,8 @@ namespace EnigmaWrapper
         /// </remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaFactoryValidatePasscode(global::EnigmaWrapper.CzmFactory admin, long today, string[] prod, ulong prodCnt, string pass)
         {
-            var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-            var __ret = __Internal.CzmEnigmaFactoryValidatePasscode(__arg0, today, prod, prodCnt, pass);
+            var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+            var __ret = Internal.CzmEnigmaFactoryValidatePasscode(__arg0, today, prod, prodCnt, pass);
             return __ret;
         }
 
@@ -1161,8 +1161,8 @@ namespace EnigmaWrapper
         /// </remarks>
         public static global::EnigmaWrapper.CzmError CzmEnigmaFactoryValidatePasscodeFromFile(global::EnigmaWrapper.CzmFactory admin, long today, string[] prod, ulong prodCnt, IntPtr root, ulong rootLen)
         {
-            var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-            var __ret = __Internal.CzmEnigmaFactoryValidatePasscodeFromFile(__arg0, today, prod, prodCnt, root, rootLen);
+            var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+            var __ret = Internal.CzmEnigmaFactoryValidatePasscodeFromFile(__arg0, today, prod, prodCnt, root, rootLen);
             return __ret;
         }
 
@@ -1170,14 +1170,14 @@ namespace EnigmaWrapper
         {
             get
             {
-                return global::EnigmaWrapper.CzmFactoryResult.__CreateInstance(new IntPtr(&((__Internal*)__Instance)->result));
+                return global::EnigmaWrapper.CzmFactoryResult.CreateInstance(new IntPtr(&((Internal*)Instance)->result));
             }
 
             set
             {
                 if (ReferenceEquals(value, null))
                     throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-                ((__Internal*)__Instance)->result = *(global::EnigmaWrapper.CzmFactoryResult.__Internal*)value.__Instance;
+                ((Internal*)Instance)->result = *(global::EnigmaWrapper.CzmFactoryResult.Internal*)value.Instance;
             }
         }
     }
@@ -1188,106 +1188,106 @@ namespace EnigmaWrapper
     //public unsafe partial class CzmService : IDisposable
     //{
     //    [StructLayout(LayoutKind.Sequential, Size = 16)]
-    //    public partial struct __Internal
+    //    public partial struct Internal
     //    {
-    //        internal global::EnigmaWrapper.CzmServiceResult.__Internal result;
+    //        internal global::EnigmaWrapper.CzmServiceResult.Internal result;
 
-    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmService@@QEAA@AEBU0@@Z", CallingConvention = __CallingConvention.Cdecl)]
-    //        internal static extern IntPtr Cctor(IntPtr __instance, IntPtr _0);
+    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "??0CzmService@@QEAA@AEBU0@@Z", CallingConvention = CallingConvention.Cdecl)]
+    //        internal static extern IntPtr Cctor(IntPtr instance, IntPtr _0);
 
-    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceMakeInstance", CallingConvention = __CallingConvention.Cdecl)]
+    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceMakeInstance", CallingConvention = CallingConvention.Cdecl)]
     //        internal static extern void CzmEnigmaServiceMakeInstance(IntPtr @return, IntPtr result);
 
-    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateOnedayPasscode", CallingConvention = __CallingConvention.Cdecl)]
+    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateOnedayPasscode", CallingConvention = CallingConvention.Cdecl)]
     //        internal static extern global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateOnedayPasscode(IntPtr admin, long today, IntPtr user, ulong userLen, [MarshalAs(UnmanagedType.LPArray)] string[] prod, ulong prodCnt, [MarshalAs(UnmanagedType.LPStr)] string pass);
 
-    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateOnedayPasscodeFromFile", CallingConvention = __CallingConvention.Cdecl)]
+    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateOnedayPasscodeFromFile", CallingConvention = CallingConvention.Cdecl)]
     //        internal static extern global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateOnedayPasscodeFromFile(IntPtr admin, long today, IntPtr user, ulong userLen, [MarshalAs(UnmanagedType.LPArray)] string[] prod, ulong prodCnt, IntPtr root, ulong rootLen);
 
-    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateMasterPasscodeFromFile", CallingConvention = __CallingConvention.Cdecl)]
+    //        [SuppressUnmanagedCodeSecurity, DllImport(@"C:\Users\Customer\Downloads\FSE\Czm_Enigma_2.0.0\build\native\bin\x64\v141\Debug\Enigma.dll", EntryPoint = "CzmEnigmaServiceValidateMasterPasscodeFromFile", CallingConvention = CallingConvention.Cdecl)]
     //        internal static extern global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateMasterPasscodeFromFile(IntPtr admin, long today, [MarshalAs(UnmanagedType.LPArray)] string[] prod, ulong prodCnt, IntPtr root, ulong rootLen);
     //    }
 
-    //    public IntPtr __Instance { get; protected set; }
+    //    public IntPtr Instance { get; protected set; }
 
     //    internal static readonly global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmService> NativeToManagedMap = new global::System.Collections.Concurrent.ConcurrentDictionary<IntPtr, global::EnigmaWrapper.CzmService>();
 
-    //    protected bool __ownsNativeInstance;
+    //    protected bool ownsNativeInstance;
 
-    //    internal static CzmService __CreateInstance(IntPtr native, bool skipVTables = false)
+    //    internal static CzmService CreateInstance(IntPtr native, bool skipVTables = false)
     //    {
     //        return new CzmService(native.ToPointer(), skipVTables);
     //    }
 
-    //    internal static CzmService __GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
+    //    internal static CzmService GetOrCreateInstance(IntPtr native, bool saveInstance = false, bool skipVTables = false)
     //    {
     //        if (native == IntPtr.Zero)
     //            return null;
     //        if (NativeToManagedMap.TryGetValue(native, out var managed))
     //            return (CzmService)managed;
-    //        var result = __CreateInstance(native, skipVTables);
+    //        var result = CreateInstance(native, skipVTables);
     //        if (saveInstance)
     //            NativeToManagedMap[native] = result;
     //        return result;
     //    }
 
-    //    internal static CzmService __CreateInstance(__Internal native, bool skipVTables = false)
+    //    internal static CzmService CreateInstance(Internal native, bool skipVTables = false)
     //    {
     //        return new CzmService(native, skipVTables);
     //    }
 
-    //    private static void* __CopyValue(__Internal native)
+    //    private static void* CopyValue(Internal native)
     //    {
-    //        var ret = Marshal.AllocHGlobal(sizeof(__Internal));
-    //        *(__Internal*)ret = native;
+    //        var ret = Marshal.AllocHGlobal(sizeof(Internal));
+    //        *(Internal*)ret = native;
     //        return ret.ToPointer();
     //    }
 
-    //    private CzmService(__Internal native, bool skipVTables = false)
-    //        : this(__CopyValue(native), skipVTables)
+    //    private CzmService(Internal native, bool skipVTables = false)
+    //        : this(CopyValue(native), skipVTables)
     //    {
-    //        __ownsNativeInstance = true;
-    //        NativeToManagedMap[__Instance] = this;
+    //        ownsNativeInstance = true;
+    //        NativeToManagedMap[Instance] = this;
     //    }
 
     //    protected CzmService(void* native, bool skipVTables = false)
     //    {
     //        if (native == null)
     //            return;
-    //        __Instance = new IntPtr(native);
+    //        Instance = new IntPtr(native);
     //    }
 
     //    public CzmService()
     //    {
-    //        __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmService.__Internal));
-    //        __ownsNativeInstance = true;
-    //        NativeToManagedMap[__Instance] = this;
+    //        Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmService.Internal));
+    //        ownsNativeInstance = true;
+    //        NativeToManagedMap[Instance] = this;
     //    }
 
     //    public CzmService(global::EnigmaWrapper.CzmService _0)
     //    {
-    //        __Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmService.__Internal));
-    //        __ownsNativeInstance = true;
-    //        NativeToManagedMap[__Instance] = this;
-    //        *((global::EnigmaWrapper.CzmService.__Internal*)__Instance) = *((global::EnigmaWrapper.CzmService.__Internal*)_0.__Instance);
+    //        Instance = Marshal.AllocHGlobal(sizeof(global::EnigmaWrapper.CzmService.Internal));
+    //        ownsNativeInstance = true;
+    //        NativeToManagedMap[Instance] = this;
+    //        *((global::EnigmaWrapper.CzmService.Internal*)Instance) = *((global::EnigmaWrapper.CzmService.Internal*)_0.Instance);
     //    }
 
     //    public void Dispose()
     //    {
-    //        Dispose(disposing: true, callNativeDtor: __ownsNativeInstance);
+    //        Dispose(disposing: true, callNativeDtor: ownsNativeInstance);
     //    }
 
     //    partial void DisposePartial(bool disposing);
 
     //    internal protected virtual void Dispose(bool disposing, bool callNativeDtor)
     //    {
-    //        if (__Instance == IntPtr.Zero)
+    //        if (Instance == IntPtr.Zero)
     //            return;
-    //        NativeToManagedMap.TryRemove(__Instance, out _);
+    //        NativeToManagedMap.TryRemove(Instance, out _);
     //        DisposePartial(disposing);
-    //        if (__ownsNativeInstance)
-    //            Marshal.FreeHGlobal(__Instance);
-    //        __Instance = IntPtr.Zero;
+    //        if (ownsNativeInstance)
+    //            Marshal.FreeHGlobal(Instance);
+    //        Instance = IntPtr.Zero;
     //    }
 
     //    /// <summary>Returns an initialized instance of #CzmService</summary>
@@ -1297,10 +1297,10 @@ namespace EnigmaWrapper
     //    {
     //        if (ReferenceEquals(result, null))
     //            throw new global::System.ArgumentNullException("result", "Cannot be null because it is passed by value.");
-    //        var __arg0 = result.__Instance;
-    //        var __ret = new global::EnigmaWrapper.CzmService.__Internal();
-    //        __Internal.CzmEnigmaServiceMakeInstance(new IntPtr(&__ret), __arg0);
-    //        return global::EnigmaWrapper.CzmService.__CreateInstance(__ret);
+    //        var __arg0 = result.Instance;
+    //        var __ret = new global::EnigmaWrapper.CzmService.Internal();
+    //        Internal.CzmEnigmaServiceMakeInstance(new IntPtr(&__ret), __arg0);
+    //        return global::EnigmaWrapper.CzmService.CreateInstance(__ret);
     //    }
 
     //    /// <summary>
@@ -1319,8 +1319,8 @@ namespace EnigmaWrapper
     //    /// </remarks>
     //    public static global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateOnedayPasscode(global::EnigmaWrapper.CzmService admin, long today, IntPtr user, ulong userLen, string[] prod, ulong prodCnt, string pass)
     //    {
-    //        var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-    //        var __ret = __Internal.CzmEnigmaServiceValidateOnedayPasscode(__arg0, today, user, userLen, prod, prodCnt, pass);
+    //        var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+    //        var __ret = Internal.CzmEnigmaServiceValidateOnedayPasscode(__arg0, today, user, userLen, prod, prodCnt, pass);
     //        return __ret;
     //    }
 
@@ -1340,8 +1340,8 @@ namespace EnigmaWrapper
     //    /// </remarks>
     //    public static global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateOnedayPasscodeFromFile(global::EnigmaWrapper.CzmService admin, long today, IntPtr user, ulong userLen, string[] prod, ulong prodCnt, IntPtr root, ulong rootLen)
     //    {
-    //        var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-    //        var __ret = __Internal.CzmEnigmaServiceValidateOnedayPasscodeFromFile(__arg0, today, user, userLen, prod, prodCnt, root, rootLen);
+    //        var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+    //        var __ret = Internal.CzmEnigmaServiceValidateOnedayPasscodeFromFile(__arg0, today, user, userLen, prod, prodCnt, root, rootLen);
     //        return __ret;
     //    }
 
@@ -1360,8 +1360,8 @@ namespace EnigmaWrapper
     //    /// </remarks>
     //    public static global::EnigmaWrapper.CzmError CzmEnigmaServiceValidateMasterPasscodeFromFile(global::EnigmaWrapper.CzmService admin, long today, string[] prod, ulong prodCnt, IntPtr root, ulong rootLen)
     //    {
-    //        var __arg0 = admin is null ? IntPtr.Zero : admin.__Instance;
-    //        var __ret = __Internal.CzmEnigmaServiceValidateMasterPasscodeFromFile(__arg0, today, prod, prodCnt, root, rootLen);
+    //        var __arg0 = admin is null ? IntPtr.Zero : admin.Instance;
+    //        var __ret = Internal.CzmEnigmaServiceValidateMasterPasscodeFromFile(__arg0, today, prod, prodCnt, root, rootLen);
     //        return __ret;
     //    }
 
@@ -1369,30 +1369,30 @@ namespace EnigmaWrapper
     //    {
     //        get
     //        {
-    //            return global::EnigmaWrapper.CzmServiceResult.__CreateInstance(new IntPtr(&((__Internal*)__Instance)->result));
+    //            return global::EnigmaWrapper.CzmServiceResult.CreateInstance(new IntPtr(&((Internal*)Instance)->result));
     //        }
 
     //        set
     //        {
     //            if (ReferenceEquals(value, null))
     //                throw new global::System.ArgumentNullException("value", "Cannot be null because it is passed by value.");
-    //            ((__Internal*)__Instance)->result = *(global::EnigmaWrapper.CzmServiceResult.__Internal*)value.__Instance;
+    //            ((Internal*)Instance)->result = *(global::EnigmaWrapper.CzmServiceResult.Internal*)value.Instance;
     //        }
     //    }
     //}
 
     namespace Delegates
     {
-        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public unsafe delegate void Action_IntPtr_EnigmaWrapper_CzmError(IntPtr self, global::EnigmaWrapper.CzmError result);
 
-        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public unsafe delegate void Action_IntPtr_EnigmaWrapper_CzmError_long(IntPtr self, global::EnigmaWrapper.CzmError result, long creation);
 
-        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public unsafe delegate void Action_IntPtr_EnigmaWrapper_CzmError_long_long(IntPtr self, global::EnigmaWrapper.CzmError result, long creation, long expiration);
 
-        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(__CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity, UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public unsafe delegate void Action_IntPtr_EnigmaWrapper_CzmError_IntPtr_ulong_long_long(IntPtr self, global::EnigmaWrapper.CzmError result, IntPtr user, ulong userLen, long creation, long expiration);
 
         public class Response
